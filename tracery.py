@@ -452,14 +452,6 @@ def ran(text, seed, *params):
 
 base_english = {
     'replace': replace,
-    'capitalizeAll': capitalizeAll,
-    'capitalize': capitalize_,
-    'a': a,
-    'firstS': firstS,
-    's': s,
-    'ed': ed,
-    'uppercase': uppercase,
-    'lowercase': lowercase,
     'ran': ran
 }
 
