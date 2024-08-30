@@ -246,7 +246,7 @@ class Grammar(object):
         return root
 
     def flatten(self, rule, allow_escape_chars=False, seed=None):
-        random.seed(seed)
+        #random.seed(seed)
         root = self.expand(rule, allow_escape_chars, seed)
         return root.finished_text
 
@@ -447,7 +447,7 @@ def lowercase(text, seed, *params):
 # Custom
 
 def ran(text, seed, *params):
-    random.seed(seed)
+    #random.seed(seed)
     return text if random.random() < (float(params[0]) / 100.0) else ""
 
 base_english = {
@@ -474,6 +474,9 @@ class TraceryInvocation(BaseInvocation):
     prompt: str = InputField(title="Prompt", description="The prompt to expand")
 
     def invoke(self, context: InvocationContext) -> TraceryOutput:
+        # Seed
+        random.seed(self.seed)
+
         # Merge all the provided dicts
         all_dicts: dict = {}
         for grammar_str in self.grammars:
