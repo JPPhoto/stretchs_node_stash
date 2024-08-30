@@ -111,6 +111,14 @@ Loading Tracery grammars from a directory.
 
 ![Tracery Example 2](images/tracery_2.png)
 
+## Changelog
+- Added extension selection to LoadAllTextFilesInFolder
+- Fixed Tracery modifiers that were a waste of time
+- Added MergeStringCollections node
+- Fixed LoadTextFileToString using cache by default
+- Added RandomSDXLDimensions node
+- Fixed issue with Tracery randomisation
+
 ## License
 This port uses code from the python port of Tracery by Allison Parish and therefore inherits the Apache License 2.0
 
