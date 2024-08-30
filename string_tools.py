@@ -35,7 +35,7 @@ class LoadTextFileToStringOutput(BaseInvocationOutput):
     result: str = OutputField(title="Result")
 
 
-@invocation("load_text_file_to_string_invocation", title="Load Text File to String", tags=["string"], category="string", version="1.0.0")
+@invocation("load_text_file_to_string_invocation", title="Load Text File to String", tags=["string"], category="string", version="1.0.0", use_cache=False)
 class LoadTextFileToStringInvocation(BaseInvocation):
     """Loads a text from a provided path and outputs it as a string"""
 
