@@ -39,6 +39,10 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 - `Load All Text Files In Folder` - Loads all files in the given directory which have the given extension as strings and returns them as a Collection of strings.
 - `Merge String Collections` - Takes two collections of strings and merges them into one Collection.
 
+### Misc
+
+- `Random SDXL Dimensions` - Outputs random SDXL dimensions. 3:2, 4:3, 1:1, 3:4 and 2:3.
+
 ### Debug Tools
 
 - `Print String to Console` - Just prints the input string to the console in the selected colour combination. (Useful for quickly debugging string manipulations.)
