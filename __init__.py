@@ -25,6 +25,6 @@ from .debug_tools import (
 from .tracery import (
     TraceryInvocation
 )
-from misc_tools import (
+from .misc_tools import (
     RandomSDXLDimensionsInvocation
 )
