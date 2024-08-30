@@ -24,7 +24,7 @@ class RandomSDXLDimensionsOutput(BaseInvocationOutput):
     width: int = OutputField(title="Width")
     height: int = OutputField(title="Height")
 
-@invocation("random_sdxl_dimensions_invocation", title="Random SDXL Dimensions Invocations", tags=["size", "image", "sdxl"], category="size", version="1.0.0")
+@invocation("random_sdxl_dimensions_invocation", title="Random SDXL Dimensions", tags=["size", "image", "sdxl"], category="size", version="1.0.0")
 class RandomSDXLDimensionsInvocation(BaseInvocation):
     """Outputs a random SDXL size."""
 
