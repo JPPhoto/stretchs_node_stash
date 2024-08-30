@@ -4,12 +4,10 @@ from invokeai.app.invocations.baseinvocation import (
     invocation,
     invocation_output,
 )
-from invokeai.app.invocations.model import (
-    LoRAField, ModelIdentifierField
-)
 from invokeai.app.invocations.fields import InputField, OutputField
 from invokeai.app.services.shared.invocation_context import InvocationContext
 import os
+from typing import Union
 
 
 @invocation_output("string_collection_joiner_output")
@@ -74,3 +72,24 @@ class LoadAllTextFilesInFolderInvocation(BaseInvocation):
                     files_content.append(file.read())
     
         return LoadAllTextFilesInFolderOutput(result=files_content)
+
+
+@invocation_output("merge_string_collections_output")
+class MergeStringCollectionsOutput(BaseInvocationOutput):
+    """Merge String Collections output"""
+
+    collection: list[str] = OutputField(description="The merged collection", title="Collection")
+
+
+@invocation("merge_string_collections_invocation", title="Merge String Collections", tags=["collection", "string"], category="collection", version="1.0.0")
+class MergeStringCollectionsInvocation(BaseInvocation):
+    """Merges two Collections of LoRAs into a single Collection."""
+
+    collection1: Union[str, list[str]] = InputField(title="Collection 1", description="A collection of strings or a single string.")
+    collection2: Union[str, list[str]] = InputField(title="Collection 2", description="A collection of strings or a single string.")
+
+    def invoke(self, context: InvocationContext) -> MergeStringCollectionsOutput:
+        new_collection: list[str] = []
+        new_collection.extend(self.collection1 if self.collection1 == list[str] else list[str](self.collection1))
+        new_collection.extend(self.collection2 if self.collection2 == list[str] else list[str](self.collection2))
+        return MergeStringCollectionsOutput(collection=new_collection)

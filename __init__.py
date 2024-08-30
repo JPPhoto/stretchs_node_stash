@@ -16,7 +16,8 @@ from .lora_tools import (
 from .string_tools import (
     StringCollectionJoinerInvocation,
     LoadTextFileToStringInvocation,
-    LoadAllTextFilesInFolderInvocation
+    LoadAllTextFilesInFolderInvocation,
+    MergeStringCollectionsInvocation
 )
 from .debug_tools import (
     PrintStringToConsoleInvocation

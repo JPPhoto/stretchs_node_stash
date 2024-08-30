@@ -37,6 +37,7 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 - `String Collection Joiner` - Takes in a Collection of of strings and returns a single string with all the entries separated by the given delimeter.
 - `Load Text File To String` - Loads a file at the given path as a string and outputs it.
 - `Load All Text Files In Folder` - Loads all files in the given directory which have the given extension as strings and returns them as a Collection of strings.
+- `Merge String Collections` - Takes two collections of strings and merges them into one Collection.
 
 ### Debug Tools
 
