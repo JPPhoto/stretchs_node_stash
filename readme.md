@@ -28,6 +28,7 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 
 - `LoRA Collection From Path` - Returns a collection of nodes that have a partial match to the given path. (Mostly useful if your loras are stored on disk in a categorised directory structure)
 - `Lookup LoRA Triggers` - Takes input from a LoRA Selector node and outputs the trigger phrases that are defined for that LoRA in the model manager.
+- `Lookup LoRA Collection Triggers` - Same as above but for a whole collection of LoRAs. Outputs all triggers as string collection.
 - `Random LoRA Mixer` - Takes a collection of LoRAs and returns a new, random collection based on the various input values.
 - `Merge LoRA Collections` - Takes two collections of LoRAs and merges them into one Collection.
 - `Reapply LoRA Weight` - Allows the setting of a LoRA's weight after it has been selected.
@@ -41,7 +42,7 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 
 ### Misc
 
-- `Random SDXL Dimensions` - Outputs random SDXL dimensions. 3:2, 4:3, 1:1, 3:4 and 2:3.
+- `Random Aspect Ratio` - Selects a width & height between a suplied min & max aspect ratio that is appropriate for the supplied base model
 
 ### Debug Tools
 
@@ -118,6 +119,8 @@ Loading Tracery grammars from a directory.
 - Fixed LoadTextFileToString using cache by default
 - Added RandomSDXLDimensions node
 - Fixed issue with Tracery randomisation
+- Added LookupLoRACollectionTriggers node
+- Removed RandomSDXLDimension and replaced with the base model agnostic RandomAspectRatio node.
 
 ## License
 This port uses code from the python port of Tracery by Allison Parish and therefore inherits the Apache License 2.0

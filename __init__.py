@@ -9,6 +9,7 @@ from .name_grabbers import (
 from .lora_tools import (
     LoRACollectionFromPathInvocation,
     LookupLoRATriggersInvocation,
+    LookupLoRACollectionTriggersInvocation,
     RandomLoRAMixerInvocation,
     MergeLoRACollectionsInvocation,
     ReapplyLoRAWeightInvocation
@@ -26,5 +27,5 @@ from .tracery import (
     TraceryInvocation
 )
 from .misc_tools import (
-    RandomSDXLDimensionsInvocation
+    RandomAspectRatioInvocation
 )

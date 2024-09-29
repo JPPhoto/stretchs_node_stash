@@ -125,6 +125,41 @@ class LookupLoRATriggersInvocation(BaseInvocation):
             raise HTTPException(status_code=404, detail=str(e))
 
 
+@invocation_output("lookup_lora_collection_triggers_output")
+class LookupLoRACollectionTriggersOutput(BaseInvocationOutput):
+    """Lookup LoRA Collection Triggers Output"""
+
+    trigger_words: list[str] = OutputField(description="A collection of all the LoRAs trigger words", title="Trigger Words")
+
+@invocation("lookup_lora_collection_triggers_invocation", title="Lookup LoRA Collection Triggers", tags=["model, lora, collection"], category="model", version="1.0.0")
+class LookupLoRACollectionTriggersInvocation(BaseInvocation):
+    """Retrieves trigger words from the Model Manager for all LoRAs in the collection"""
+
+    lora_collection: list[LoRAField] = InputField(
+        title="LoRA Collection", 
+        description="The LoRAs to look up"
+    )
+
+    def invoke(self, context: InvocationContext) -> LookupLoRATriggersOutput:
+        try:
+            trigger_list: list[str] = []
+
+            for lora in self.lora_collection:
+                # Get the input LoRA's data from the Model Manager
+                loaded_model: LoadedModel = context.models.load(identifier=lora.lora.key)
+            
+                # Extract trigger words in to a new list
+                lora_trigger_list = list(loaded_model.config.trigger_phrases) if loaded_model.config.trigger_phrases else [""]
+
+                # Merge
+                if lora_trigger_list is list:
+                    trigger_list.extend(lora_trigger_list)
+            
+            return LookupLoRACollectionTriggersOutput(trigger_words=trigger_list)
+        except UnknownModelException as e:
+            raise HTTPException(status_code=404, detail=str(e))
+
+
 @invocation_output("random_lora_mixer_output")
 class RandomLoRAMixerOutput(BaseInvocationOutput):
     """Random LoRA Mixer Output"""
