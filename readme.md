@@ -14,10 +14,23 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 
 ## Node Breakdown
 
-### Selectors
+### Toggles
 
-- `Integer Selector` - Takes two integer inputs and allows the user to decide which is used based on a toggle.
-- `String Selector` - Same as above but for strings.
+- `Integer Toggle` - Takes two integer inputs and allows the user to decide which is used based on a toggle.
+- `Integer Collection Toggle` - Same as above but for Integer Collections.
+- `String Toggle` - Same as above but for Strings.
+- `String Collection Toggle` - Same as above but for String Collections.
+- `Bool Toggle` - For Booleans.
+- `Bool Collection Toggle` - For Boolean Collections.
+- `Float Toggle` - For Floats.
+- `Float Collection Toggle` - For Float Collections.
+- `Image Toggle` - For Images.
+- `Image Collection Toggle` - For Image Collections.
+- `LoRA Toggle` - For LoRAs
+- `LoRA Collection Toggle` - For LoRA Collections
+- `Scheduler Toggle` - For Schedulers.
+- `Model Toggle` - A generic model toggle. For input use ModelIdentifier node. Warning: All models will be selectable. Ensure the input models are of the same type and are output to something that can use that type or Invoke will throw errors.
+- `SDXL Main Model Toggle` - Same as above but only for SDXL main models so much easier/safer to use.
 
 ### Name Grabbers
 
@@ -47,6 +60,11 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 ### Debug Tools
 
 - `Print String to Console` - Just prints the input string to the console in the selected colour combination. (Useful for quickly debugging string manipulations.)
+
+### Compares
+- `Compare Int` - Compares two integer inputs based on a user selected method and outputs a bool depending on the result. Includes greater than, less than, equal to and not equal to
+- `Compare Float` - Same as above for floats
+- `Compare String` - Same as above for strings. Includes equals, contains, starts with and ends with. Has an extra toggle to ignore case if required.
 
 ### Tracery
 
@@ -121,6 +139,10 @@ Loading Tracery grammars from a directory.
 - Fixed issue with Tracery randomisation
 - Added LookupLoRACollectionTriggers node
 - Removed RandomSDXLDimension and replaced with the base model agnostic RandomAspectRatio node.
+- Fixed issue with LookupLoRACollectionTriggers not outputting the string collection correctly.
+- Selector node names changed to Toggle to avoid a namimg conflict with core nodes.
+- Extended toggle nodes to all primitives and a few extra.
+- Added some compare nodes for int, float and string.
 
 ## License
 This port uses code from the python port of Tracery by Allison Parish and therefore inherits the Apache License 2.0

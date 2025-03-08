@@ -1,6 +1,19 @@
-from .selectors import (
-    IntSelectorInvocation,
-    StringSelectorInvocation
+from .toggles import (
+    BoolToggleInvocation,
+	BoolCollectionToggleInvocation,
+	IntToggleInvocation,
+	IntCollectionToggleInvocation,
+	FloatToggleInvocation,
+	FloatCollectionToggleInvocation,
+	StringToggleInvocation,
+	StringCollectionToggleInvocation,
+	ImageToggleInvocation,
+	ImageCollectionToggleInvocation,
+	LoRAToggleInvocation,
+	LoRACollectionToggleInvocation,
+	SchedulerToggleInvocation,
+	ModelToggleInvocation,
+	SDXLMainModelToggleInvocation
 )
 from .name_grabbers import (
     ModelNameGrabberInvocation,
@@ -28,4 +41,9 @@ from .tracery import (
 )
 from .misc_tools import (
     RandomAspectRatioInvocation
+)
+from .compares import (
+	CompareIntsInvocation,
+	CompareFloatsInvocation,
+	CompareStringsInvocation
 )
