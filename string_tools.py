@@ -58,18 +58,24 @@ class LoadAllTextFilesInFolderOutput(BaseInvocationOutput):
 
 @invocation("load_all_text_files_in_folder_output", title="Load All Text Files In Folder", tags=["string"], category="string", version="1.0.1", use_cache=False)
 class LoadAllTextFilesInFolderInvocation(BaseInvocation):
-    """Loads all text files in a folder and returns them as a Collection of strings"""
+    """Loads all text files in a folder and its subfolders recursively, returning them as a Collection of strings"""
 
     extension_to_match: str = InputField(title="File Extension", description="Only files with the given extension will be loaded. For example: json")
     folder_path: str = InputField(title="Folder Path", description="The path to load files from.")
 
     def invoke(self, context: InvocationContext) -> LoadAllTextFilesInFolderOutput:
+        if not os.path.isdir(self.folder_path):
+            raise OSError(f"The path '{self.folder_path}' is either not a directory or does not exist.")
+        
         files_content = []
-        for filename in os.listdir(self.folder_path):
-            if filename.endswith(self.extension_to_match):
-                file_path = os.path.join(self.folder_path, filename)
-                with open(file_path, 'r') as file:
-                    files_content.append(file.read())
+        
+        # Walk through all subdirectories and files in the folder
+        for root, dirs, files in os.walk(self.folder_path):
+            for filename in files:
+                if filename.endswith(self.extension_to_match):
+                    file_path = os.path.join(root, filename)
+                    with open(file_path, 'r') as file:
+                        files_content.append(file.read())
     
         return LoadAllTextFilesInFolderOutput(result=files_content)
 
