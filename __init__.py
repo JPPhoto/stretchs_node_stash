@@ -15,6 +15,9 @@ from .toggles import (
 	ModelToggleInvocation,
 	SDXLMainModelToggleInvocation
 )
+from .info_grabbers import (
+	InfoGrabberUNetInvocation
+)
 from .name_grabbers import (
     ModelNameGrabberInvocation,
     LoRANameGrabberInvocation
