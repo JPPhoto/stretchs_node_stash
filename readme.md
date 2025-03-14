@@ -98,9 +98,9 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
         - This node implements [Tracery](http://tracery.io/) by Kate Compton, using code from the [Python version](https://github.com/aparrish/pytracery) by Allison Parrish.
 
 ## Examples
-Integer selector to toggle between a random or fixed seed.
+Integer Toggle to toggle between a random or fixed seed.
 
-![Integer Selector Example](images/int_selector.png)
+![Integer Toggle Example](images/int_toggle.png)
 
 Grabbing the name from a model.
 
