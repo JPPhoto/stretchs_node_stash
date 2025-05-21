@@ -34,7 +34,8 @@ from .string_tools import (
     StringCollectionJoinerInvocation,
     LoadTextFileToStringInvocation,
     LoadAllTextFilesInFolderInvocation,
-    MergeStringCollectionsInvocation
+    MergeStringCollectionsInvocation,
+	StringToCollectionSplitterInvocation
 )
 from .debug_tools import (
     PrintStringToConsoleInvocation

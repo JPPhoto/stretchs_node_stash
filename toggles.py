@@ -139,8 +139,8 @@ class ImageToggleInvocation(BaseInvocation):
 	img2: ImageField = InputField(description="Second Image Input")
 
 	def invoke(self, context: InvocationContext) -> ImageOutput:
-		image = context.images.get_pil(self.img2.image_name if self.use_second else self.img1.image_name)
-		return ImageOutput(image=image, width=image.width, height=image.height)
+		image_dto = context.images.get_dto(self.img2.image_name if self.use_second else self.img1.image_name)
+		return ImageOutput.build(image_dto=image_dto)
 
 @invocation("image_collection_toggle", title="Image Collection Toggle", tags=["image", "collection", "toggle"], category="toggle", version="1.0.0")
 class ImageCollectionToggleInvocation(BaseInvocation):

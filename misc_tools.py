@@ -26,7 +26,7 @@ class RandomAspectRatioInvocation(BaseInvocation):
     """Outputs a random size for the supplied base model based on specified aspect ratio range."""
 
     seed: int = InputField(title="Seed", description="A seed for the randomness. Use -1 for non-deterministic.", default=-1)
-    unet: UNetField = InputField(default=None, description=FieldDescriptions.unet)
+    unet: UNetField = InputField(description=FieldDescriptions.unet)
     min_aspect_ratio: str = InputField(default="9:16", title="Minimum Aspect Ratio", description="Minimum aspect ratio in format 'width:height' (e.g., '1:1', '4:3')")
     max_aspect_ratio: str = InputField(default="16:9", title="Maximum Aspect Ratio", description="Maximum aspect ratio in format 'width:height' (e.g., '16:9', '2:1')")
 

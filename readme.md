@@ -52,6 +52,7 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 - `Load Text File To String` - Loads a file at the given path as a string and outputs it.
 - `Load All Text Files In Folder` - Loads all files in the given directory which have the given extension as strings and returns them as a Collection of strings.
 - `Merge String Collections` - Takes two collections of strings and merges them into one Collection.
+- `String To Collection Splitter` - Splits a delimited string into a Collection
 
 ### Misc
 
@@ -143,6 +144,9 @@ Loading Tracery grammars from a directory.
 - Selector node names changed to Toggle to avoid a namimg conflict with core nodes.
 - Extended toggle nodes to all primitives and a few extra.
 - Added some compare nodes for int, float and string.
+- Small fixes to account for changes in Invoke v5.12.0rc2
+- Fix to ImageToggle thanks to JPhoto
+- Added StringToCollectionSplitter and added escaping to StringCollectionJoiner thanks to JPPhoto
 
 ## License
 This port uses code from the python port of Tracery by Allison Parish and therefore inherits the Apache License 2.0
