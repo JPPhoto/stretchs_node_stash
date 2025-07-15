@@ -33,6 +33,8 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 - `SDXL Main Model Toggle` - Same as above but only for SDXL main models so much easier/safer to use.
 - `Conditioning Toggle` - For Conditioning.
 - `Conditioning Collection Toggle` - For Conditioning Collections.
+- `FLUX Conditioning Toggle` - For FLUX Conditioning.
+- `FLUX Conditioning Collection Toggle` - For FLUX Conditioning Collections.
 
 ### Name Grabbers
 

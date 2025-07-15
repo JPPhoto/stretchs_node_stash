@@ -1,3 +1,5 @@
+from invokeai.app.invocations.fields import FluxConditioningField
+from invokeai.app.invocations.primitives import FluxConditioningOutput
 from invokeai.invocation_api import (
 	SchedulerOutput,
 	SCHEDULER_NAME_VALUES,
@@ -247,7 +249,7 @@ class ConditioningToggleInvocation(BaseInvocation):
 	cond2: ConditioningField = InputField(description="Second Conditioning Input")
 
 	def invoke(self, context: InvocationContext) -> ConditioningOutput:
-	    return ConditioningOutput(conditioning=self.cond2 if self.use_second else self.cond1)
+		return ConditioningOutput(conditioning=self.cond2 if self.use_second else self.cond1)
 
 @invocation("conditioning_collection_toggle", title="Conditioning Collection Toggle", tags=["conditioning", "collection", "toggle"], category="toggle", version="1.0.0")
 class ConditioningCollectionToggleInvocation(BaseInvocation):
@@ -258,5 +260,33 @@ class ConditioningCollectionToggleInvocation(BaseInvocation):
 	col2: list[ConditioningField] = InputField(description="Second Conditioning Collection Input")
 
 	def invoke(self, context: InvocationContext) -> ConditioningCollectionOutput:
-	    return ConditioningCollectionOutput(collection=self.col2 if self.use_second else self.col1)
+		return ConditioningCollectionOutput(collection=self.col2 if self.use_second else self.col1)
 #endregion Conditioning
+
+#region FLUX Conditioning
+@invocation_output("stretch_flux_conditioning_collection_output")
+class StretchFluxConditioningCollectionOutput(BaseInvocationOutput):
+	collection: list[FluxConditioningField] = OutputField(description="The collection of input items", title="FLUX Conditionings")
+
+@invocation("flux_conditioning_toggle", title="FLUX Conditioning Toggle", tags=["conditioning", "toggle", "flux"], category="toggle", version="1.0.0")
+class FLUXConditioningToggleInvocation(BaseInvocation):
+	"""Allows boolean selection between two separate FLUX conditioning inputs"""
+
+	use_second: bool = InputField(default=False, description="Use 2nd Input")
+	cond1: FluxConditioningField = InputField(description="First FLUX Conditioning Input")
+	cond2: FluxConditioningField = InputField(description="Second FLUX Conditioning Input")
+
+	def invoke(self, context: InvocationContext) -> FluxConditioningOutput:
+		return FluxConditioningOutput(conditioning=self.cond2 if self.use_second else self.cond1)
+
+@invocation("flux_conditioning_collection_toggle", title="FLUX Conditioning Collection Toggle", tags=["conditioning", "collection", "toggle", "flux"], category="toggle", version="1.0.0")
+class FLUXConditioningCollectionToggleInvocation(BaseInvocation):
+	"""Allows boolean selection between two separate FLUX conditioning collection inputs"""
+
+	use_second: bool = InputField(default=False, description="Use 2nd Input")
+	col1: list[FluxConditioningField] = InputField(description="First FLUX Conditioning Collection Input")
+	col2: list[FluxConditioningField] = InputField(description="Second FLUX Conditioning Collection Input")
+
+	def invoke(self, context: InvocationContext) -> StretchFluxConditioningCollectionOutput:
+		return StretchFluxConditioningCollectionOutput(collection=self.col2 if self.use_second else self.col1)
+#endregion FLUX Conditioning

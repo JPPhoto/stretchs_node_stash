@@ -16,6 +16,8 @@ from .toggles import (
 	SDXLMainModelToggleInvocation,
 	ConditioningToggleInvocation,
 	ConditioningCollectionToggleInvocation,
+	FLUXConditioningToggleInvocation,
+	FLUXConditioningCollectionToggleInvocation,
 )
 from .info_grabbers import (
 	InfoGrabberUNetInvocation
