@@ -31,6 +31,8 @@ A random collection of nodes for [InvokeAI](https://github.com/invoke-ai/InvokeA
 - `Scheduler Toggle` - For Schedulers.
 - `Model Toggle` - A generic model toggle. For input use ModelIdentifier node. Warning: All models will be selectable. Ensure the input models are of the same type and are output to something that can use that type or Invoke will throw errors.
 - `SDXL Main Model Toggle` - Same as above but only for SDXL main models so much easier/safer to use.
+- `Conditioning Toggle` - For Conditioning.
+- `Conditioning Collection Toggle` - For Conditioning Collections.
 
 ### Name Grabbers
 
