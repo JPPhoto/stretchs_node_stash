@@ -3,6 +3,9 @@ from invokeai.invocation_api import (
 	SCHEDULER_NAME_VALUES,
 	BooleanOutput,
 	BooleanCollectionOutput,
+	ConditioningField,
+	ConditioningOutput,
+	ConditioningCollectionOutput,
 	IntegerOutput,
 	IntegerCollectionOutput,
 	FloatOutput,
@@ -233,3 +236,27 @@ class SDXLMainModelToggleInvocation(BaseInvocation):
 			vae=self.vae2 if self.use_second else self.vae1
 		)
 #endregion Main Model
+
+#region Conditioning
+@invocation("conditioning_toggle", title="Conditioning Toggle", tags=["conditioning", "toggle"], category="toggle", version="1.0.0")
+class ConditioningToggleInvocation(BaseInvocation):
+	"""Allows boolean selection between two separate conditioning inputs"""
+
+	use_second: bool = InputField(default=False, description="Use 2nd Input")
+	cond1: ConditioningField = InputField(description="First Conditioning Input")
+	cond2: ConditioningField = InputField(description="Second Conditioning Input")
+
+	def invoke(self, context: InvocationContext) -> ConditioningOutput:
+	    return ConditioningOutput(conditioning=self.cond2 if self.use_second else self.cond1)
+
+@invocation("conditioning_collection_toggle", title="Conditioning Collection Toggle", tags=["conditioning", "collection", "toggle"], category="toggle", version="1.0.0")
+class ConditioningCollectionToggleInvocation(BaseInvocation):
+	"""Allows boolean selection between two separate conditioning collection inputs"""
+
+	use_second: bool = InputField(default=False, description="Use 2nd Input")
+	col1: list[ConditioningField] = InputField(description="First Conditioning Collection Input")
+	col2: list[ConditioningField] = InputField(description="Second Conditioning Collection Input")
+
+	def invoke(self, context: InvocationContext) -> ConditioningCollectionOutput:
+	    return ConditioningCollectionOutput(collection=self.col2 if self.use_second else self.col1)
+#endregion Conditioning
